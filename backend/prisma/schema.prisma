@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+//RECORDS
+
+model User {
+  id             Int    @id @default(autoincrement())
+  firstName      String
+  lastName       String
+  email          String @unique
+  hashedPassword String
+  createdAt      DateTime @default(now())
+  tickets Ticket[]
+}
+
+model Movie {
+  id Int @id @default(autoincrement())
+  title String
+  duration Int
+  description String? @db.VarChar(1000)
+  releaseDate DateTime
+  thumbNail String?
+  genres Genre[]
+  actors Actor[]
+  presentations Presentation[]
+}
+
+model Genre {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(50) @unique
+  movies Movie[]
+}
+
+model Actor {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(50)
+  movies Movie[]
+}
+
+model Room {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(50) @unique
+  capacity Int
+  screen Screen @relation(fields: [screenId], references: [id])
+  screenId Int
+  presentations Presentation[]
+  seats Seat[]
+}
+
+model Seat {
+  id Int @id @default(autoincrement())
+  row Int
+  number Int
+  price Decimal @db.Decimal(9,2)
+  room Room @relation(fields: [roomId], references: [id])
+  roomId Int
+  seatTicket Seat_Ticket[]
+}
+
+model Screen {
+  id Int @id @default(autoincrement())
+  type String @db.VarChar(50) @unique
+  rooms Room[]
+}
+
+model Presentation {
+  id Int @id @default(autoincrement())
+  movie Movie @relation(fields: [movieId], references: [id])
+  movieId Int
+  room Room @relation(fields: [roomId], references: [id])
+  roomId Int
+  date DateTime
+  time String @db.VarChar(5)
+  tickets Ticket[]
+  seatTicker Seat_Ticket[]
+}
+
+model Ticket {
+  id Int @id @default(autoincrement())
+  presentation Presentation @relation(fields: [presentationId], references: [id])
+  presentationId Int
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  totalPrice Decimal @db.Decimal(9,2)
+  purchaseDate DateTime?
+  payed Boolean @default(false)
+  seatTickets Seat_Ticket[]
+}
+
+model Seat_Ticket {
+  id Int @id @default(autoincrement())
+  seat Seat @relation(fields: [seatId], references: [id])
+  seatId Int
+  ticket Ticket @relation(fields: [ticketId], references: [id])
+  ticketId Int
+  presentation Presentation @relation(fields: [presentationId], references: [id])
+  presentationId Int
+}
+

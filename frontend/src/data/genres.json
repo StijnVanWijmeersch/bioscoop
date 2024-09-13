@@ -1,0 +1,99 @@
+[
+    {
+        "id": 1,
+        "name": "Horror"
+    },
+    {
+        "id": 2,
+        "name": "Science fiction"
+    },
+    {
+        "id": 3,
+        "name": "Drama"
+    },
+    {
+        "id": 4,
+        "name": "Supernatural"
+    },
+    {
+        "id": 5,
+        "name": "Action"
+    },
+    {
+        "id": 7,
+        "name": "Comedy"
+    },
+    {
+        "id": 8,
+        "name": "Mystery"
+    },
+    {
+        "id": 9,
+        "name": "Crime"
+    },
+    {
+        "id": 10,
+        "name": "Thriller"
+    },
+    {
+        "id": 6,
+        "name": "Adventure"
+    },
+    {
+        "id": 11,
+        "name": "Fantasy"
+    },
+    {
+        "id": 12,
+        "name": "War"
+    },
+    {
+        "id": 13,
+        "name": "Superhero"
+    },
+    {
+        "id": 14,
+        "name": "Family"
+    },
+    {
+        "id": 15,
+        "name": "Romance"
+    },
+    {
+        "id": 16,
+        "name": "Teen"
+    },
+    {
+        "id": 17,
+        "name": "Spy"
+    },
+    {
+        "id": 18,
+        "name": "Historical"
+    },
+    {
+        "id": 19,
+        "name": "Political"
+    },
+    {
+        "id": 20,
+        "name": "Docu"
+    },
+    {
+        "id": 21,
+        "name": "Slasher"
+    },
+    {
+        "id": 22,
+        "name": "Noir"
+    },
+    {
+        "id": 23,
+        "name": "Animated"
+    },
+    {
+        "id": 24,
+        "name": "Biography"
+    }
+
+]
